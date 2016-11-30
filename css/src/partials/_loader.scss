@@ -1,6 +1,7 @@
-
+  
 
 $preloaderColor : #fecb2f;
+$preloaderColor : $violetColor;
 
 body.loading:after {
   content: "";
