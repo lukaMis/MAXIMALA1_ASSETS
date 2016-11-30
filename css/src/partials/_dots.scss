@@ -1,0 +1,42 @@
+
+
+#dotsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  position: absolute;
+  width: $width;
+  bottom: 0;
+
+  padding-bottom: 15px;
+}
+
+
+#dotsWrapper .dot {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+
+
+// ACTUAL DOT in dot button :)
+#dotsWrapper .dot:after {
+  content: '';
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+}
+#dotsWrapper .dot:after {
+  transition: background-color 0.2s linear;
+}
+
+
+// ACTIVE DOT
+#dotsWrapper .dot[data-active="true"]:after {
+  background-color: rgb(0, 0, 0);
+}
