@@ -1,6 +1,8 @@
 
 
 // typography
+body, 
+html,
 p, 
 h1, 
 h2, 
@@ -10,10 +12,14 @@ h5,
 h6, 
 li, 
 span, 
-a {
+a,
+*:after,
+*:before {
 
   // font-family: 'Open Sans';
-  font-family: 'Arial, Helvetica, Droid Sans, Roboto, sans-serif';
+  // font-family: 'Arial, Helvetica, Droid Sans, Roboto, sans-serif';
+  // font-family: 'Arial', 'Helvetica', 'Droid Sans', 'Roboto', 'sans-serif';
+  font-family: Arial, Helvetica, Roboto, Droid Sans, Sans-Serif;
   font-style: normal;
   
   font-size: 21px;
