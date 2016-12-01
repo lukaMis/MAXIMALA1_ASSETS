@@ -447,6 +447,16 @@ html, body {
   left: 0;
   overflow: hidden; }
 
+#wrapper {
+  width: 1024px;
+  height: 768px; }
+
+#wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden; }
+
 body,
 html,
 p,
