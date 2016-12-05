@@ -1,0 +1,366 @@
+
+
+.clock {
+  width: 345px;
+  height: 345px;
+
+  position: absolute;
+  
+  top: 0;
+  left: 0;
+
+  border-radius: 50%;
+}
+
+
+.clock {
+  background-color: rgb(83, 183, 232);
+}
+
+.clock:before {
+  content: '';
+  
+  width: 258px;
+  height: 258px;
+
+  position: absolute;
+  
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+  
+  border-radius: 50%;
+
+  z-index: 1;
+}
+.clock:before {
+  background-color: rgb(117, 190, 233);
+}
+.clock:after {
+  content: '';
+  
+  width: 6px;
+  height: 6px;
+
+  position: absolute;
+  
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+  
+  border-radius: 50%;
+
+  z-index: 4;
+  background-color: inherit;
+}
+
+
+// STYLES for BLUE clock
+.clock[data-face-color='blue'] {
+  background-color: rgb(83, 183, 232);
+}
+.clock[data-face-color='blue']:before {
+  background-color: rgb(117, 190, 233);
+}
+.clock[data-face-color='blue'] .clockHand {
+  background-color: rgb(171, 49, 146);
+}
+
+
+// STYLES for Green clock
+.clock[data-face-color='green'] {
+  background-color: rgb(121, 185, 62);
+}
+.clock[data-face-color='green']:before {
+  background-color: rgb(255, 255, 255);
+}
+.clock[data-face-color='green'] .clockHand {
+  background-color: rgb(0, 0, 0);
+}
+
+
+
+// HANDS
+.handsWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.clockHand {
+  position: absolute;
+  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
+  transform-origin: 50% 100%;
+  z-index: 1;
+  transition: transform 0.5s ease-out;
+
+  left: 50%;
+  transform: translateX(-50%);
+  
+  z-index: 3;
+}
+.clockHand {
+  background-color: rgb(171, 49, 146);
+}
+.clockHand:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 14px;
+  
+  top: 96%;
+  left: 50%;
+  transform: translate(-50%) rotate(180deg);
+  border-radius: inherit;
+
+  background-color: inherit;
+  // opacity: 0;
+}
+
+.clock[data-hand-color='violet'] .clockHand {
+  background-color: rgb(171, 49, 146);
+}
+.clock[data-hand-color='black'] .clockHand {
+  background-color: rgb(0, 0, 0);
+}
+
+
+.clockHand[data-type='hours'] {
+  width: 10px;
+  height: 70px;
+
+  top: 105px;
+
+  transition-duration: 0.3s;
+}
+
+.clockHand[data-type='minutes'] {
+  width: 8px;
+  height: 110px;
+  
+  top: 65px;
+
+  transition-duration: 0.4s;
+}
+
+.clockHand[data-type='seconds'] {
+  width: 4px;
+  height: 124px;
+  
+  top: 51px;
+
+  transition-duration: 0.5s;
+  border-radius: 20px;
+}
+
+// @keyframes rotate {
+//   100% {
+//     transform: rotateZ(360deg);
+//   }
+// }
+
+// .hours {
+//   animation: rotate 43200s infinite linear;
+// }
+// .minutes {
+//   animation: rotate 3600s infinite linear;
+//   animation: rotate 3600s infinite steps(60);
+// }
+// .seconds {
+//   animation: rotate 60s infinite linear;
+//   animation: rotate 60s infinite steps(60);
+// }
+
+// .hours {
+//   transition: transform 0.5s cubic-bezier(.4,2.08,.55,.44);
+// }
+// .minutes {
+//   transition: transform 0.5s cubic-bezier(.4,2.08,.55,.44);
+// }
+// .seconds {
+//   transition: transform 0.5s cubic-bezier(.4,2.08,.55,.44);
+// }
+
+// .hours {
+//   transition: transform 0.5s ease-out;
+// }
+// .minutes {
+//   transition: transform 0.5s ease-out;
+// }
+// .seconds {
+//   transition: transform 0.5s ease-out;
+// }
+
+
+
+.dialWrapper {
+
+  width: 258px;
+  height: 258px;
+
+  position: absolute;
+  
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+}
+
+.dial {
+  width: 258px;
+  height: 258px;
+
+  position: absolute;
+  
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+}
+
+// AFTER is for NUMBERS
+.dial:after {
+  content: "";
+  position: absolute;
+  
+  font-weight: bold;
+  font-size: 22px;
+
+  left: 50%;
+  top: -39px;
+
+  transform: translateX(-50%);
+}
+
+// BEFORE is for rectangles
+.dial:before {
+  content: "";
+  position: absolute;
+  
+  width: 4px;
+  height: 15px;
+  background: rgb(255, 255, 255);
+
+  border-radius: 1px;
+
+  left: 50%;
+  top: -7px;
+
+  transform: translateX(-50%);
+}
+.clock[data-face-color='green'] .dial:before {
+  background-color: rgb(0, 0, 0);
+}
+
+
+
+
+.dial[data-dial="12"]:after {
+  content: "12";
+  transform: translateX(-50%);
+}
+
+
+.dial[data-dial="1"] {
+  transform: translate(-50%, -50%) rotate(30deg);
+}
+.dial[data-dial="1"]:after {
+  content: "1";
+  transform: translateX(-50%) rotate(-30deg);
+}
+
+
+.dial[data-dial="2"] {
+  transform: translate(-50%, -50%) rotate(60deg);
+}
+.dial[data-dial="2"]:after {
+  content: "2";
+  transform: translateX(-50%) rotate(-60deg);
+}
+
+
+.dial[data-dial="3"] {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.dial[data-dial="3"]:after {
+  content: "3";
+  transform: translateX(-50%) rotate(-90deg);
+}
+
+
+.dial[data-dial="4"] {
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+.dial[data-dial="4"]:after {
+  content: "4";
+  transform: translateX(-50%) rotate(-120deg);
+}
+
+
+.dial[data-dial="5"] {
+  transform: translate(-50%, -50%) rotate(150deg);
+}
+.dial[data-dial="5"]:after {
+  content: "5";
+  transform: translateX(-50%) rotate(-150deg);
+}
+
+
+.dial[data-dial="6"] {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+.dial[data-dial="6"]:after {
+  content: "6";
+  transform: translateX(-50%) rotate(-180deg);
+}
+
+
+.dial[data-dial="7"] {
+  transform: translate(-50%, -50%) rotate(210deg);
+}
+.dial[data-dial="7"]:after {
+  content: "7";
+  transform: translateX(-50%) rotate(-210deg);
+}
+
+
+.dial[data-dial="8"] {
+  transform: translate(-50%, -50%) rotate(240deg);
+}
+.dial[data-dial="8"]:after {
+  content: "8";
+  transform: translateX(-50%) rotate(-240deg);
+}
+
+
+.dial[data-dial="9"] {
+  transform: translate(-50%, -50%) rotate(270deg);
+}
+.dial[data-dial="9"]:after {
+  content: "9";
+  transform: translateX(-50%) rotate(-270deg);
+}
+
+
+.dial[data-dial="10"] {
+  transform: translate(-50%, -50%) rotate(300deg);
+}
+.dial[data-dial="10"]:after {
+  content: "10";
+  transform: translateX(-50%) rotate(-300deg);
+}
+
+
+
+.dial[data-dial="11"] {
+  transform: translate(-50%, -50%) rotate(330deg);
+}
+.dial[data-dial="11"]:after {
+  content: "11";
+  transform: translateX(-50%) rotate(-330deg);
+}
+
