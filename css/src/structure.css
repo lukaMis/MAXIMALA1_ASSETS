@@ -488,6 +488,15 @@ i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.violet {
+  background-color: #8d64aa; }
+
+.background-violet {
+  background-color: #8d64aa; }
+
+.background-white {
+  background-color: white; }
+
 #dotsWrapper {
   display: -webkit-flex;
   display: -ms-flexbox;
