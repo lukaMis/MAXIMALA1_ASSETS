@@ -473,8 +473,6 @@ a,
 *:before {
   font-family: Arial, Helvetica, Roboto, Droid Sans, Sans-Serif;
   font-style: normal;
-  font-size: 21px;
-  line-height: 28px;
   text-decoration: none;
   color: black; }
 
@@ -488,11 +486,14 @@ i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.violet {
-  background-color: #8d64aa; }
+.color-violet {
+  color: #8d64aa; }
 
 .background-violet {
   background-color: #8d64aa; }
+
+.color-white {
+  color: white; }
 
 .background-white {
   background-color: white; }
