@@ -8,7 +8,7 @@ $(function () {
 	}
 	
 	i18n.init({
-		lng: getParameterByName("locale") || $("html").attr("lang") || "sl",
+		lng: getParameterByName("locale") || $("html").attr("lang") || "de",
 		resGetPath: "assets/localization/locale-__lng__.json",
 		fallbackLng: false,
 		load: "unspecific"
