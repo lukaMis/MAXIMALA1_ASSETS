@@ -1,5 +1,8 @@
 
 
+$baseClockSpeed : 0.55s;
+
+
 .clock {
   width: 345px;
   height: 345px;
@@ -133,7 +136,7 @@
 
   top: 105px;
 
-  transition-duration: 0.3s;
+  transition-duration: $baseClockSpeed;
 }
 
 .clockHand[data-type='minutes'] {
@@ -142,7 +145,7 @@
   
   top: 65px;
 
-  transition-duration: 0.4s;
+  transition-duration: $baseClockSpeed * 1.5;
 }
 
 .clockHand[data-type='seconds'] {
@@ -151,7 +154,7 @@
   
   top: 51px;
 
-  transition-duration: 0.5s;
+  transition-duration: $baseClockSpeed * 2;
   border-radius: 20px;
 }
 

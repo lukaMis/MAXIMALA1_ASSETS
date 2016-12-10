@@ -36,7 +36,7 @@ let Clock = function(configObject) {
   let clockId;
 
 
-  let makeAClock = (function(configObject) {
+  const makeAClock = function(configObject) {
 
     let date = new Date();
     let seconds = date.getSeconds();
@@ -79,10 +79,10 @@ let Clock = function(configObject) {
     } else {
       throw new Error('missing parent selector for Clock');
     }
-  })(configObject);
+  };
 
 
-  let setClockTime = function setClockTime(data) {
+  const setClockTime = function setClockTime(data) {
     // Create an object with each hand and it's angle in degrees
 
     if(data.hours === undefined) {
@@ -122,15 +122,38 @@ let Clock = function(configObject) {
   };
 
 
+  const getTimeOfDay = function getTimeOfDay() {
+    let date = new Date();
+    return {
+      hours: date.getHours(),
+      minutes: date.getMinutes(),
+      seconds: date.getSeconds()
+    }
+  };
+
+
+  const init = function init() {
+    makeAClock(configObject);
+    setClockTime({
+      hours: 0,
+      minutes: 0,
+      seconds: 0
+    });
+  };
+  init();
+
+
 
   /* API */
   instance.setTime = function(object) {
     setClockTime(object);
   };
+  instance.setCurrentTime = function() {
+    setClockTime(getTimeOfDay());
+  };
   instance.getId = function(object) {
     return clockId;
   };
-
 
   return instance;
 };
