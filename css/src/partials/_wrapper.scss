@@ -7,10 +7,10 @@
 
 
 #wrapper {
-  position: relative;
-
-  top: 0;
+  position: absolute;
+  width: 1024px;
+  height: 768px;
   left: 0;
-
-  overflow: hidden;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
 }

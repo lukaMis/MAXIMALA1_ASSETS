@@ -452,10 +452,14 @@ html, body {
   height: 768px; }
 
 #wrapper {
-  position: relative;
-  top: 0;
+  position: absolute;
+  width: 1024px;
+  height: 768px;
   left: 0;
-  overflow: hidden; }
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  transition: all 0.2s ease; }
 
 body,
 html,
