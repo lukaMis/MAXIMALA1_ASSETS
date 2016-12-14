@@ -1,6 +1,7 @@
 
 
-$baseClockSpeed : 0.55s;
+$baseClockSpeed : 1.25s;
+$baseClockDelay : 0.75s;
 
 
 .clock {
@@ -93,11 +94,14 @@ $baseClockSpeed : 0.55s;
 
 .clockHand {
   position: absolute;
-  border-radius: 10px;
   border-radius: 10px 10px 0px 0px;
   transform-origin: 50% 100%;
   z-index: 1;
-  transition: transform 0.5s ease-out;
+  // transition: transform 0.5s ease-out;
+  transition-property: transform;
+  transition-duration: $baseClockSpeed;
+  transition-timing-function: linear; 
+  transition-delay: 0;
 
   left: 50%;
   transform: translateX(-50%);
@@ -136,7 +140,8 @@ $baseClockSpeed : 0.55s;
 
   top: 105px;
 
-  transition-duration: $baseClockSpeed;
+  transition-duration: $baseClockSpeed * 2;
+  transition-delay: $baseClockDelay * 1.5;
 }
 
 .clockHand[data-type='minutes'] {
@@ -145,7 +150,8 @@ $baseClockSpeed : 0.55s;
   
   top: 65px;
 
-  transition-duration: $baseClockSpeed * 1.5;
+  transition-duration: $baseClockSpeed;
+  transition-delay: $baseClockDelay;
 }
 
 .clockHand[data-type='seconds'] {
@@ -154,8 +160,10 @@ $baseClockSpeed : 0.55s;
   
   top: 51px;
 
-  transition-duration: $baseClockSpeed * 2;
   border-radius: 20px;
+
+  transition-duration: $baseClockSpeed / 1.25;
+  transition-delay: $baseClockDelay / 1.1;
 }
 
 // @keyframes rotate {

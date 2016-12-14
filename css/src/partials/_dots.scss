@@ -30,6 +30,7 @@
   width: 24px;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 #dotsWrapper .dot:after {
   transition: background-color 0.2s linear;
