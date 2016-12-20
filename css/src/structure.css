@@ -502,6 +502,12 @@ i {
 .background-white {
   background-color: white; }
 
+.color-yellow {
+  color: #ffcc32; }
+
+.background-yellow {
+  background-color: #ffcc32; }
+
 #dotsWrapper {
   display: -webkit-flex;
   display: -ms-flexbox;
