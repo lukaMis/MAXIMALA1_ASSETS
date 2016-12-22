@@ -106,8 +106,8 @@
   width: 10px;
   height: 70px;
   top: 105px;
-  transition-duration: 2.5s;
-  transition-delay: 1.125s; }
+  transition-duration: 1.25s;
+  transition-delay: 0.75s; }
 
 .clockHand[data-type='minutes'] {
   width: 8px;

@@ -140,8 +140,8 @@ $baseClockDelay : 0.75s;
 
   top: 105px;
 
-  transition-duration: $baseClockSpeed * 2;
-  transition-delay: $baseClockDelay * 1.5;
+  transition-duration: $baseClockSpeed;
+  transition-delay: $baseClockDelay;
 }
 
 .clockHand[data-type='minutes'] {
