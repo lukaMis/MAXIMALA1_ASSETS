@@ -85,7 +85,11 @@ const Clock = (configObject) => {
   const setClockTime = (data) => {
     // Create an object with each hand and it's angle in degrees
 
-    $('#' + clockId + ' div[data-type="hours"]').one('transitionend', onHandTransitionComplete);
+    if(data.skipTransitionListner === true) {
+      console.log('skip adding transition event listner');
+    } else {
+      $('#' + clockId + ' div[data-type="hours"]').one('transitionend', onHandTransitionComplete);
+    }
 
     if(data.hours === undefined) {
       data.hours = 0;
@@ -272,7 +276,8 @@ const Clock = (configObject) => {
     setClockTime({
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+      skipTransitionListner: true
     });
   };
   init();
