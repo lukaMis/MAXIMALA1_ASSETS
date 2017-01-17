@@ -1,7 +1,7 @@
 
 
-$baseClockSpeed : 1.25s;
-$baseClockDelay : 0.75s;
+// $baseClockSpeed : 1.25s;
+// $baseClockDelay : 0.75s;
 
 
 .clock {
@@ -98,10 +98,11 @@ $baseClockDelay : 0.75s;
   transform-origin: 50% 100%;
   z-index: 1;
   // transition: transform 0.5s ease-out;
-  transition-property: transform;
-  transition-duration: $baseClockSpeed;
-  transition-timing-function: linear; 
-  transition-delay: 0;
+  
+  // transition-property: transform;
+  // transition-duration: $baseClockSpeed;
+  // transition-timing-function: linear; 
+  // transition-delay: 0;
 
   left: 50%;
   transform: translateX(-50%);
@@ -140,8 +141,8 @@ $baseClockDelay : 0.75s;
 
   top: 105px;
 
-  transition-duration: $baseClockSpeed;
-  transition-delay: $baseClockDelay;
+  // transition-duration: $baseClockSpeed;
+  // transition-delay: $baseClockDelay;
 }
 
 .clockHand[data-type='minutes'] {
@@ -150,8 +151,8 @@ $baseClockDelay : 0.75s;
   
   top: 65px;
 
-  transition-duration: $baseClockSpeed;
-  transition-delay: $baseClockDelay;
+  // transition-duration: $baseClockSpeed;
+  // transition-delay: $baseClockDelay;
 }
 
 .clockHand[data-type='seconds'] {
@@ -162,8 +163,8 @@ $baseClockDelay : 0.75s;
 
   border-radius: 20px;
 
-  transition-duration: $baseClockSpeed / 1.25;
-  transition-delay: $baseClockDelay / 1.1;
+  // transition-duration: $baseClockSpeed / 1.25;
+  // transition-delay: $baseClockDelay / 1.1;
 }
 
 // @keyframes rotate {
@@ -374,4 +375,3 @@ $baseClockDelay : 0.75s;
   content: "11";
   transform: translateX(-50%) rotate(-330deg);
 }
-
