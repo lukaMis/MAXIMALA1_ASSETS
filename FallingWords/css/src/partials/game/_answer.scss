@@ -1,0 +1,110 @@
+
+
+.answer {
+  // border: 1px solid red;
+  position: absolute;
+  // top: 21px;
+  // left: 0;
+  cursor: pointer;
+}
+.answer:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  opacity: 0;
+}
+
+.answer .textWrapper {
+
+}
+
+#gameView .answer .textWrapper p {
+  font-size: 25px;
+  font-size: 36px;
+  padding: 4px 6px;
+  position: relative;
+}
+
+#wrapper #gameView .answer .textWrapper p {
+  background-color: $backgroundColor;
+}
+
+// THEMES
+#wrapper[data-theme="0"] #gameView .answer .textWrapper p {
+  background-color: $backgroundColor_0;
+}
+#wrapper[data-theme="1"] #gameView .answer .textWrapper p {
+  background-color: $backgroundColor_1;
+}
+#wrapper[data-theme="2"] #gameView .answer .textWrapper p {
+  background-color: $backgroundColor_2;
+}
+#wrapper[data-theme="3"] #gameView .answer .textWrapper p {
+  background-color: $backgroundColor_3;
+}
+
+
+
+.answer[data-clickable="false"] {
+  pointer-events: none;
+}
+
+.answer .textWrapper.scale-0 {
+  transition: transform 0.35s linear;
+  transform: scale(0);
+}
+
+
+$distance : 10px;
+
+.answer .textWrapper.shake {
+  animation-name: shake;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10% {
+    transform: translate3d(-($distance * 2), 0, 0);
+  }
+
+  20% {
+    transform: translate3d( ($distance * 2), 0, 0);
+  }
+
+  30% {
+    transform: translate3d(-($distance * 1.5), 0, 0);
+  }
+
+  40% {
+    transform: translate3d( ($distance * 1.5), 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-($distance * 1), 0, 0);
+  }
+
+  60% {
+    transform: translate3d( ($distance * 1), 0, 0);
+  }
+
+  70% {
+    transform: translate3d(-($distance * 0.5), 0, 0);
+  }
+
+  80% {
+    transform: translate3d( ($distance * 0.5), 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-($distance) * 0.2, 0, 0);
+  }
+}

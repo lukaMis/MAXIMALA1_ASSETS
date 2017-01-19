@@ -1,0 +1,81 @@
+
+
+.view {
+  position: absolute;
+  
+  width: 1024px;
+  height: 768px;
+
+  top: 0;
+  left: 0;
+
+  padding: 0 160px;
+
+  text-align: center;
+
+  z-index: 0;
+}
+.view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#wrapper .view {
+  background-color: $backgroundColor;
+}
+
+// THEMES
+#wrapper[data-theme="0"] .view {
+  background-color: $backgroundColor_0;
+}
+#wrapper[data-theme="1"] .view {
+  background-color: $backgroundColor_1;
+}
+#wrapper[data-theme="2"] .view {
+  background-color: $backgroundColor_2;
+}
+#wrapper[data-theme="3"] .view {
+  background-color: $backgroundColor_3;
+}
+
+
+
+.view p {
+  font-style: normal;
+  font-size: $fontSize;
+  color: $fontColor;
+  position: relative;
+}
+.view p:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  opacity: 0;
+}
+
+
+.view .annotation {
+  margin-bottom: 20px;
+}
+
+
+.view .button {
+  padding: 12px 16px;
+  background-color: $buttonBackgroundColor;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+// fix for themes above 3
+.view .button {
+  border: 1px solid rgba(90, 90, 90, 0.16);
+}

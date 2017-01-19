@@ -1,0 +1,26 @@
+
+
+body {
+  // background-color: rgb(0, 0, 0);
+  // background-color: $backgroundColor;
+}
+
+#wrapper {
+  background-color: $backgroundColor;
+}
+
+#wrapper[data-theme="0"] {
+  background-color: $backgroundColor_0;
+}
+
+#wrapper[data-theme="1"] {
+  background-color: $backgroundColor_1;
+}
+
+#wrapper[data-theme="2"] {
+  background-color: $backgroundColor_2;
+}
+
+#wrapper[data-theme="3"] {
+  background-color: $backgroundColor_3;
+}

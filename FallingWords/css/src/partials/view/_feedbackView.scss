@@ -1,0 +1,9 @@
+
+
+#feedbackView {
+  z-index: 2;
+}
+
+#feedbackView .annotation span {
+  color: $feedbackViewPointsColor;
+}

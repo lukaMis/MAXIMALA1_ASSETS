@@ -1,0 +1,24 @@
+
+
+.particle {
+  
+  width: 10px;
+  height: 10px;
+  
+  position: absolute;
+  z-index: 10;
+  
+  background-color: rgb(255, 255, 255);
+
+  top: calc(50% - 10px);
+  left: calc(50% - 5px);
+
+  pointer-events: none;
+}
+
+.particle[data-type="square"] {
+  border-radius: 0%;
+}
+.particle[data-type="sphere"] {
+  border-radius: 50%;
+}

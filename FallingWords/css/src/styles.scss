@@ -1,0 +1,19 @@
+
+
+// shared
+@import 'partials/_a_variables';
+@import 'partials/wrapper';
+@import 'partials/contentWrapper';
+
+// views
+@import 'partials/view/view';
+@import 'partials/view/titleView';
+@import 'partials/view/gameView';
+@import 'partials/view/feedbackView';
+
+@import 'partials/view/devView';
+
+// game specific
+@import 'partials/game/infoBar';
+@import 'partials/game/answer';
+@import 'partials/game/particle';
