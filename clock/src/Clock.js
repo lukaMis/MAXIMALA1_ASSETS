@@ -61,7 +61,7 @@ const Clock = (configObject) => {
 
   let clockId;
 
-  let clockSpeed = 1;
+  let clockSpeed = 2.5;
 
 
   const makeAClock = (configObject) => {
@@ -85,18 +85,36 @@ const Clock = (configObject) => {
       clockId = document.getElementById(clockId).id + '_' + Math.floor( hours.toString() + minutes.toString() + seconds.toString() + (Math.random() * 999999).toString() ).toString();
     }
 
-    const initialStyle = 'translate(-50%) rotate(0deg)';
-    // ' translate(-50%) ' + ' ' + 'rotate('+ handsData[j].angle +'deg)';
+    const initialStyle = `translate(-50%) rotate(0deg)`;
+
+    let h = 0;
+    if(configObject.hours === undefined) {
+      h = 0;
+    } else {
+      h = configObject.hours;
+    }
+    let m = 0;
+    if(configObject.minutes === undefined) {
+      m = 0;
+    } else {
+      m = configObject.minutes;
+    }
+    let s = 0;
+    if(configObject.seconds === undefined) {
+      s = 0;
+    } else {
+      s = configObject.seconds;
+    }
+
 
     let _clock_string = '';
     let _clock_0 = '<div class="clock" id="' + clockId + '" data-face-color="' + clockSkin + '">';
     let _clock_1 = '<div class="dialWrapper">';
     let _clock_2 = '';
     let _clock_3 = '<div class="handsWrapper">';
-    let _clock_4 = `<div class="clockHand" data-type="hours" style="${initialStyle}"></div>`;
-    let _clock_5 = `<div class="clockHand" data-type="minutes" style="${initialStyle}"></div>`;
-    let _clock_6 = `<div class="clockHand" data-type="seconds" style="${initialStyle}"></div>`;
-
+    let _clock_4 = `<div class="clockHand" data-type="hours" style="transform: translate(-50%) rotate(${(h * 30) + (m / 2)}deg)"></div>`;
+    let _clock_5 = `<div class="clockHand" data-type="minutes" style="transform: translate(-50%) rotate(${(m * 6)}deg)"></div>`;
+    let _clock_6 = `<div class="clockHand" data-type="seconds" style="transform: translate(-50%) rotate(${(s * 6)}deg)"></div>`;
 
     let _close_div = '</div>';
 
@@ -120,7 +138,7 @@ const Clock = (configObject) => {
     // if(data.skipTransitionListner === true) {
     //   console.log('skip adding transition event listner');
     // } else {
-    //   $('#' + clockId + ' div[data-type="hours"]').one('transitionend', onHandTransitionComplete);
+      $('#' + clockId + ' div[data-type="hours"]').one('transitionend', onHandTransitionComplete);
     // }
 
     if(data.hours === undefined) {
@@ -181,35 +199,49 @@ const Clock = (configObject) => {
       }
     ];
 
+    // let speed = (data.clockSpeed === 0) ? data.clockSpeed : clockSpeed;
+    let speed = 0;
+    if(data.clockSpeed === undefined) {
+      speed = clockSpeed;
+    }
+    if(data.clockSpeed === 0) {
+      speed = data.clockSpeed;
+    }
+
+    console.log('data.clockSpeed', data.clockSpeed);
+    console.log('speed', speed);
+
     // Loop through each of these handsData to set their angle
-    // for (let j = 0; j < handsData.length; j++) {
-    //   let elements = document.getElementById(clockId).querySelectorAll('[data-type="' + handsData[j].hand + '"]');
-    //   for (let k = 0; k < elements.length; k++) {
-    //     elements[k].style.transform = ' translate(-50%) ' + ' ' + 'rotate('+ handsData[j].angle +'deg)';
-    //     elements[k].style['transition-duration'] = '';
-    //   }
-    // }
+    for (let j = 0; j < handsData.length; j++) {
+      let elements = document.getElementById(clockId).querySelectorAll('[data-type="' + handsData[j].hand + '"]');
+      for (let k = 0; k < elements.length; k++) {
+        elements[k].style.transform = ' translate(-50%) ' + ' ' + 'rotate('+ handsData[j].angle +'deg)';
+        // elements[k].style['transition-duration'] = '';
+        elements[k].style['transition-duration'] = speed + 's';
+        elements[k].style['transition-timing-function'] = 'linear';
+      }
+    }
     console.log('angleForHour', angleForHour);
     // console.log('selector', '#' + clockId + ' div[data-type="' + handsData[0].hand + '"]' );
     // console.log( 'handsData[0].angle', handsData[0].angle, handsData[0].angle + 360 );
 
-    TweenLite.to('#' + clockId + ' div[data-type="' + handsData[0].hand + '"]', 3 * clockSpeed, {
-     rotation: handsData[0].angle,
-     ease:Linear.easeNone,
-     onComplete: function(e) {
-      console.log('on complete hour');
-      resetAngles();
-      $(instance).trigger('onTimeSet', {id:clockId});
-     }
-    });
-    TweenLite.to('#' + clockId + ' div[data-type="' + handsData[1].hand + '"]', 2 * clockSpeed, {
-     rotation: handsData[1].angle,
-     ease:Linear.easeNone
-    });
-    TweenLite.to('#' + clockId + ' div[data-type="' + handsData[2].hand + '"]', 1 * clockSpeed, {
-     rotation: handsData[2].angle,
-     ease:Linear.easeNone
-    });
+    // TweenLite.to('#' + clockId + ' div[data-type="' + handsData[0].hand + '"]', 1 * clockSpeed, {
+    //  rotation: handsData[0].angle,
+    //  ease:Linear.easeNone,
+    //  onComplete: function(e) {
+    //   console.log('on complete hour');
+    //   resetAngles();
+    //   $(instance).trigger('onTimeSet', {id:clockId});
+    //  }
+    // });
+    // TweenLite.to('#' + clockId + ' div[data-type="' + handsData[1].hand + '"]', 1 * clockSpeed, {
+    //  rotation: handsData[1].angle,
+    //  ease:Linear.easeNone
+    // });
+    // TweenLite.to('#' + clockId + ' div[data-type="' + handsData[2].hand + '"]', 1 * clockSpeed, {
+    //  rotation: handsData[2].angle,
+    //  ease:Linear.easeNone
+    // });
 
     handsDataOld.length = 0;
     handsDataOld = [
@@ -231,8 +263,8 @@ const Clock = (configObject) => {
 
   const onHandTransitionComplete = (e) => {
     $('#' + clockId + ' div[data-type="hours"]').off('transitionend', onHandTransitionComplete);
-    $(instance).trigger('onTimeSet', {id:clockId});
     resetAngles();
+    $(instance).trigger('onTimeSet', {id:clockId});
   };
 
 
@@ -256,28 +288,28 @@ const Clock = (configObject) => {
       console.log('sec reset by 360');
     }
 
-    // for (let j = 0; j < handsDataOld.length; j++) {
-    //   let elements = document.getElementById(clockId).querySelectorAll('[data-type="' + handsDataOld[j].hand + '"]');
-    //   for (let k = 0; k < elements.length; k++) {
-    //     elements[k].style.transform = ' translate(-50%) ' + ' ' + 'rotate('+ handsDataOld[j].angle +'deg)';
-    //     elements[k].style['transition-duration'] = '0s';
-    //   }
-    // }
+    for (let j = 0; j < handsDataOld.length; j++) {
+      let elements = document.getElementById(clockId).querySelectorAll('[data-type="' + handsDataOld[j].hand + '"]');
+      for (let k = 0; k < elements.length; k++) {
+        elements[k].style['transition-duration'] = '0s';
+        elements[k].style.transform = ' translate(-50%) ' + ' ' + 'rotate('+ handsDataOld[j].angle +'deg)';
+      }
+    }
 
-    TweenLite.to('#' + clockId + ' div[data-type="' + handsData[0].hand + '"]', 0, {
-     rotation: handsDataOld[0].angle,
-     ease:Linear.easeNone
-    });
-    TweenLite.to('#' + clockId + ' div[data-type="' + handsData[1].hand + '"]', 0, {
-     rotation: handsDataOld[1].angle,
-     ease:Linear.easeNone
-    });
-    TweenLite.to('#' + clockId + ' div[data-type="' + handsData[2].hand + '"]', 0, {
-     rotation: handsDataOld[2].angle,
-     ease:Linear.easeNone
-    });
+    // TweenLite.to('#' + clockId + ' div[data-type="' + handsData[0].hand + '"]', 0, {
+    //  rotation: handsDataOld[0].angle,
+    //  ease:Linear.easeNone
+    // });
+    // TweenLite.to('#' + clockId + ' div[data-type="' + handsData[1].hand + '"]', 0, {
+    //  rotation: handsDataOld[1].angle,
+    //  ease:Linear.easeNone
+    // });
+    // TweenLite.to('#' + clockId + ' div[data-type="' + handsData[2].hand + '"]', 0, {
+    //  rotation: handsDataOld[2].angle,
+    //  ease:Linear.easeNone
+    // });
 
-    console.log('data reset');
+    console.log('clock data reset');
   };
 
 
@@ -302,14 +334,14 @@ const Clock = (configObject) => {
   instance.setTime = (object) => {
     setClockTime(object);
   };
-  instance.setInitialTime = () => {
-    setClockTime({
-      hours: 0,
-      minutes: 0,
-      seconds: 0
-    });
-    $(instance).trigger('onTimeSet', {id:clockId});
-  };
+  // instance.setInitialTime = () => {
+  //   setClockTime({
+  //     hours: 0,
+  //     minutes: 0,
+  //     seconds: 0
+  //   });
+  //   $(instance).trigger('onTimeSet', {id:clockId});
+  // };
   instance.setCurrentTime = () => {
     setClockTime(getTimeOfDay());
   };
