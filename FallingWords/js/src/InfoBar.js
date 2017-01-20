@@ -31,8 +31,9 @@ FallingWords.InfoBar = (dataObject) => {
     }, 50);
   };
 
-  const setQuestion = (question) => {
-    document.getElementById('question').innerHTML = question;
+  const setQuestion = (configObject) => {
+    document.getElementById('question').innerHTML = configObject.question;
+    document.getElementById('question').style.color = configObject.color || '#000';
   };
 
   const setScore = (scoreObj) => {
@@ -145,8 +146,8 @@ FallingWords.InfoBar = (dataObject) => {
     createTimer();
   };
 
-  instance.setQuestion = (question) => {
-    setQuestion(question);
+  instance.setQuestion = (configObject) => {
+    setQuestion(configObject);
   };
 
   instance.incrementScore = () => {

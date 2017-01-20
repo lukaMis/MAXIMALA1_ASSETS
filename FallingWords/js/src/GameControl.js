@@ -10,6 +10,7 @@ FallingWords.GameControl = (dataObject) => {
   const feedbacView = dataObject.feedbacView;
   const particles = dataObject.particles;
   const soundControl = dataObject.soundControl;
+  const dataHandler = dataObject.dataHandler;
 
   let newQuestionTimeout;
 
@@ -22,11 +23,10 @@ FallingWords.GameControl = (dataObject) => {
 
     addGameView();
 
-    makeNewQuestionTimeout();
-
     infoBar.init();
+    setNewQuestion();
+    makeNewQuestionTimeout();
     
-    infoBar.setQuestion( spawnControl.getQuestion() );
     spawnControl.startSpawn();
 
     addEventListnerForClicking();
@@ -35,10 +35,17 @@ FallingWords.GameControl = (dataObject) => {
     addEventListnerForRestart();
   };
 
+  const setNewQuestion = () => {
+    infoBar.setQuestion({
+      question: spawnControl.getQuestion(),
+      color: dataHandler.getGameData()[FallingWords.CURRENT_ID].questionColor
+    });
+  };
+
   const makeNewQuestionTimeout = () => {
     console.log( 'FallingWords.NEW_QUESTION_TIMER_IN_SECONDS', FallingWords.NEW_QUESTION_TIMER_IN_SECONDS );
     newQuestionTimeout = setTimeout(() => {
-      infoBar.setQuestion( spawnControl.getQuestion() );
+      setNewQuestion();
       soundControl.play('change');
       makeNewQuestionTimeout();
     }, FallingWords.NEW_QUESTION_TIMER_IN_SECONDS * 1000);

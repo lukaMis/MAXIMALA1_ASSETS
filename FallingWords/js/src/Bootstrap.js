@@ -44,7 +44,8 @@ FallingWords.Bootstrap = (configObject) => {
     spawnControl: spawnControl,
     feedbacView: feedbacView,
     particles: particles,
-    soundControl: soundControl
+    soundControl: soundControl,
+    dataHandler: dataHandler
   });
 
   const titleView = FallingWords.TitleView({
