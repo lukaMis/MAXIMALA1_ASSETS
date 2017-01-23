@@ -89,19 +89,21 @@ FallingWords.SpawnControl = (dataObject) => {
       spawn: spawnText
     });
 
-    let leftPosition = FallingWords.getRandomIntInRange(10, 1024 - 10 - (spawnText.length * 20) );
+    const marginLeftAndRight = 10;
+    const leftPosition = FallingWords.getRandomIntInRange(marginLeftAndRight, 1024 - marginLeftAndRight - (spawnText.length * 20));
+    const topPosition = 25;
 
     const answerString = 
     `
-    <div class="answer" data-id="${idToAssign}" style="left: ${leftPosition}px; top: 25px;">
+    <div class="answer" data-id="${idToAssign}" style="left: ${leftPosition}px; top: ${topPosition}px;">
       <div class="textWrapper">
         <p>${spawnText}</p>
       </div>
     </div>
     `;
+
     $('#gameView').append(answerString);
 
-    
     // setTimeout(() => {
     //   // setAnswerPosition();
     // }, 20);
@@ -115,35 +117,37 @@ FallingWords.SpawnControl = (dataObject) => {
     }, FallingWords.SPAWN_TIME_IN_SECONDS * 1000 );
   };
 
-  const setAnswerPosition = () => {
-    var answerLength = $('#gameView .answer').length;
-    var answer = $($('#gameView .answer')[answerLength - 1]);
-    var answerWidth = answer.outerWidth();
-    var leftAndRightMargin = 20;
-    var maxX = 1024 - answerWidth - leftAndRightMargin;
-    var randomX;
+  // const setAnswerPosition = () => {
+  //   var answerLength = $('#gameView .answer').length;
+  //   var answer = $($('#gameView .answer')[answerLength - 1]);
+  //   var answerWidth = answer.outerWidth();
+  //   var leftAndRightMargin = 20;
+  //   var maxX = 1024 - answerWidth - leftAndRightMargin;
+  //   var randomX;
 
-    var _getX = 0;
-    var topPosToUse = 20;
+  //   var _getX = 0;
+  //   var topPosToUse = 20;
 
-    if(maxX < 0 ) {
-      maxX = 0;
-      randomX = 0;
-    } else {
-      randomX = FallingWords.getRandomIntInRange(leftAndRightMargin, maxX);
-    }
+  //   if(maxX < 0 ) {
+  //     maxX = 0;
+  //     randomX = 0;
+  //   } else {
+  //     randomX = FallingWords.getRandomIntInRange(leftAndRightMargin, maxX);
+  //   }
 
-    answer.css({
-      left : randomX,
-      top: topPosToUse
-    });
-  };
+  //   answer.css({
+  //     left : randomX,
+  //     top: topPosToUse
+  //   });
+  // };
 
   const setAnswerTransition = () => {
-    var answerLength = $('#gameView .answer').length;
-    var answer = $($('#gameView .answer')[answerLength - 1]);
-    var _getX = 0;
-    var _getR = FallingWords.getRandomIntInRange(-FallingWords.MAX_ROTATION, FallingWords.MAX_ROTATION);
+    const answerLength = $('#gameView .answer').length;
+    const answer = $($('#gameView .answer')[answerLength - 1]);
+    const _getX = 0;
+
+    const randomRotation = FallingWords.MAX_ROTATION / answer.outerWidth() * 100 * FallingWords.ROTATION_MODIFIER_COEFFICIENT;
+    const _getR = Math.floor(FallingWords.getRandomIntInRange(-randomRotation, randomRotation));
 
     answer.css({
       '-webkit-transform': 'translate(' + _getX + 'px, ' + FallingWords.MAX_Y_POSITION + 'px)' + ' rotate(' + _getR + 'deg)',
