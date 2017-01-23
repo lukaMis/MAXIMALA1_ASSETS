@@ -21,7 +21,7 @@ FallingWords.SoundControl = () => {
     //   // filesToLoad++;
     //   // register sound
     // }
-    for (const key of Object.keys(configObj)) {
+    for (let key of Object.keys(configObj)) {
       createjs.Sound.registerSound(`../assets/FallingWords/audio/${configObj[key]}.mp3`, key);
     }
   };
