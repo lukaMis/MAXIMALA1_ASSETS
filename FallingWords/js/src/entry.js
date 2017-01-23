@@ -7,6 +7,7 @@ FallingWords.CURRENT_ID = 0;
 FallingWords.MAX_Y_POSITION = 755;
 FallingWords.PARTICLE_MAX_OFFSET = 150;
 FallingWords.AUDIO_IS_MUTED = false;
+FallingWords.ROTATION_MODIFIER_COEFFICIENT = 0.6;
 
 
 // Tweakable by editors via form.
@@ -15,7 +16,7 @@ FallingWords.GAME_TIME_IN_SECONDS = 60;
 FallingWords.NEW_QUESTION_TIMER_IN_SECONDS = 10;
 FallingWords.SPAWN_TIME_IN_SECONDS = 1.35;
 
-FallingWords.ANSWER_FALL_TIME = 20;
+FallingWords.ANSWER_FALL_TIME = 19;
 FallingWords.MAX_ROTATION = 20;
 
 FallingWords.CORRECT_SPAWN_PERCENT = 50;
