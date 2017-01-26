@@ -260,7 +260,7 @@
   transform: translateY(-50%); }
 
 #infoBar #score {
-  right: 30px;
+  right: 100px;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
